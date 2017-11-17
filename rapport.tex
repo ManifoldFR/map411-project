@@ -1,18 +1,20 @@
 \documentclass[11pt]{article}
+\usepackage[a4paper]{geometry}
 \usepackage{mathtools}
 \usepackage{amssymb,amsthm,amsfonts}
 \usepackage{titling}
 
-
-
-\newcommand{\RR}{\mathbb R}
-\newcommand{\CC}{\mathbb C}
-\newcommand{\QQ}{\mathbb Q}
-\newcommand{\ZZ}{\mathbb Z}
-\newcommand{\NN}{\mathbb N}
-\newcommand{\KK}{\mathbb K}
-\newcommand{\FF}{\mathbb F}
-\newcommand{\LL}{\mathbb L}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\PP}{\mathbb{P}}
+\DeclarePairedDelimiter{\zintcc}{[\![}{]\!]}
+\DeclarePairedDelimiter{\zintco}{[\![}{[\![}
+\DeclarePairedDelimiter{\zintoo}{]\!]}{[\![}
+\DeclarePairedDelimiter{\zintoc}{]\!]}{]\!]}
 
 %%% Titling %%%
 
@@ -37,6 +39,8 @@ Promotion X2016}
 
 \begin{document}
 \maketitle
+
+\section{L'algorithme glouton}
 
 \begin{ques}
 On rappelle l'équation de Laplace
@@ -74,6 +78,66 @@ Réciproquement, si $u$ est une fonction de classe $C^2$ sur $\overline\Omega$ q
 
 
 \end{ques}
+
+
+\begin{ques}
+Pour tous $i$ et $j$ de $\zintcc{0,I}$,
+\[
+\nabla \phi_i\otimes\phi_j (x,y) = \left(
+\phi_i'(x)\phi_j(y), \phi_i(x)\phi_j'(y)
+\right)
+\]
+donc 
+\begin{align*}
+\int_{\Omega}\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_l) 
+&=
+\int_{\Omega} \phi'_i(x)\phi_j(y)\phi_k'(x)\phi_l(y) + \phi_i(x)\phi_j'(y)\phi_k(x)\phi_l'(y)\,dx\,dy \\
+&= \int_{0}^{1}\phi'_i\phi_k'\,dx\int_0^1\phi_j\phi_l\,dy + \int_{0}^{1}\phi_i\phi_k\,dx\int_0^1\phi_j'\phi_l'\,dy\ \text{(théorème de Fubini)} \\
+&= D_{i,k}M_{j,l} + M_{i,k}D_{j,l}.
+\end{align*}
+
+Ainsi, avec
+\[
+u_h = \sum_{i,j=0}^{I}U_{i,j}\phi_i\otimes\phi_j
+\]
+on obtient
+\begin{align*}\tag{a}\label{eq:a}
+\int_{\Omega} \nabla u_h(x,y)\cdot \nabla \phi_k\otimes\phi_l (x,y)\,dx\,dy 
+&= \sum_{i,j=0}^{I}U_{i,j} \int_\Omega\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_l) \\
+&= \sum_{i,j=0}^{I}U_{i,j} (D_{i,k}M_{j,l}+M_{i,k}D_{j,l}).
+\end{align*}
+On a de plus
+\[
+\int_\Omega (\phi_i\otimes\phi_j)(x,y)(\phi_k\otimes\phi_l)(x,y)\,dx\,dy = \int_0^1 \phi_i \phi_k\,dx \int_0^1 \phi_j \phi_l\,dy = M_{i,k}M_{k,l}
+\]
+d'où
+\begin{equation}\tag{b}\label{eq:b}
+\int_\Omega u_h(x,y)\phi_k\otimes\phi_l = \sum_{i,j=0}^{I}U_{i,j}M_{i,k}M_{j,l}
+\end{equation}
+
+En supposant que $u_h$ est une solution de \eqref{laplVar}, sommer \eqref{eq:a} et \eqref{eq:b} donne
+\begin{align}\label{laplDiscr}
+\forall (k,l)\in \zintcc{0,I}^2\quad
+\sum_{i,j=0}^{I}U_{i,j}(D_{i,k}M_{j,l} + M_{i,k}D_{j,l} + M_{i,k}M_{j,l}) &=
+\int_\Omega\nabla u_h\cdot \nabla\phi_k\otimes\phi_l + \int_\Omega u_h (\phi_k\otimes\phi_l) \nonumber \\
+&= F_{k,l}.
+\end{align}
+
+
+Réciproquement, si le vecteur $U$ vérifie le système linéaire \eqref{laplDiscr}, alors la fonction $u_h = \sum_{i,j=0}^{I}U_{i,j}\phi_i\otimes\phi_j$ vérifie \eqref{laplVar} pour $v$ dans l'espace engendré par les $\phi_i\otimes\phi_j$.
+
+
+
+\end{ques}
+
+
+
+
+
+\section{Équations d'Euler et convergence de l'algorithme}
+
+
+
 
 
 
