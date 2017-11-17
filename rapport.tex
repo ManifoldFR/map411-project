@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage{mathtools}
+\usepackage{amssymb,amsthm,amsfonts}
+\usepackage{titling}
+
+
+
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\LL}{\mathbb L}
+
+%%% Titling %%%
+
+\pretitle{\hrulefill\begin{center}\LARGE}
+\title{
+	\textbf{Rapport de projet MAP411}:\\
+	\textit{Résolution des problèmes elliptiques symétriques en grande dimension}}
+\posttitle{\end{center}\hrulefill}
+
+
+\author{
+	\textit{Cheikh Fall}\\
+	\textit{Wilson Jallet}\\
+Promotion X2016}
+
+%%% Questions %%%
+
+\theoremstyle{definition}
+\newtheorem{ques}{Question}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\begin{ques}
+On rappelle l'équation de Laplace
+\begin{equation}\label{eqLapl}
+\left\{
+\begin{array}{l}
+-\Delta u + u = f\ \text{sur}\ \Omega \\
+\frac{\partial u}{\partial n} = 0\ \text{sur}\ \partial\Omega \\
+u \in C^2(\overline{\Omega})
+\end{array}
+\right.
+\end{equation}
+où $\Omega = (0,1)^2$.
+
+Supposons que la fonction $u:\overline\Omega\longrightarrow\RR$ soit une solution de \eqref{eqLapl}. Soit $v\in V$. Par une intégration par parties, on obtient
+\begin{align*}
+-\int_\Omega \Delta u\, v &= -\int_{\partial\Omega} \frac{\partial u}{\partial n}v + \int_\Omega \nabla u\cdot \nabla v \\
+&= \int_\Omega \nabla u\cdot \nabla v \quad \text{d'après \eqref{eqLapl}}
+\end{align*}
+puis en utilisant que $-\Delta u = f-u$
+\[
+	-\int_\Omega uv + \int_\Omega fv = \int_\Omega \nabla u\cdot \nabla v
+\]
+et
+\begin{equation}\label{laplVar}
+\forall v\in V\quad
+\int_\Omega \nabla u\cdot \nabla v + \int_\Omega uv = \int_\Omega fv.
+\end{equation}
+
+
+Réciproquement, si $u$ est une fonction de classe $C^2$ sur $\overline\Omega$ qui vérifie \eqref{laplVar} et $\partial u/\partial n = 0$ sur le bord de $\Omega$, une intégration par parties permet de retrouver 
+\[
+\forall v\in V\quad  -\int_\Omega \Delta u\, v + \int_\Omega uv = \int_\Omega fv
+\]
+
+
+\end{ques}
+
+
+
+
+
+\end{document}
