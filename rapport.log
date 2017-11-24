@@ -1,12 +1,16 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2017.11.17)  18 NOV 2017 12:45
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6400 64-bit) (preloaded format=xelatex 2017.9.18)  24 NOV 2017 01:52
 entering extended mode
 **./rapport.tex
 (rapport.tex
 LaTeX2e <2017-04-15>
-Babel <3.14> and hyphenation patterns for 75 language(s) loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Babel <3.12> and hyphenation patterns for 75 language(s) loaded.
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article
+.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.
+clo"
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -20,17 +24,27 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geo
+metry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\key
+val.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
-) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\i
+fpdf.sty"
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\i
+fvtex.sty"
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
-) ("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\if
+xetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count87
@@ -45,10 +59,15 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen109
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
-("C:\Program Files\MiKTeX 2.9\tex\xelatex\xetexconfig\geometry.cfg")) ("C:\Prog
-ram Files\MiKTeX 2.9\tex\latex\mathtools\mathtools.sty"
-Package: mathtools 2017/10/30 v1.20 mathematical typesetting tools
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\xelatex\xetexconfi
+g\geometry.cfg"))
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\ma
+thtools.sty"
+Package: mathtools 2017/05/24 v1.19 mathematical typesetting tools
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.s
+ty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count90
 \calc@Bcount=\count91
@@ -60,22 +79,34 @@ LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count92
 \calc@Cskip=\skip45
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\mathtools\mhsetup.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mh
+setup.sty"
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsm
+ath.sty"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip46
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amst
+ext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsg
+en.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen113
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+))
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsb
+sy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen114
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amso
+pn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count93
@@ -129,15 +160,21 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_intertext_sep=\dimen126
 \l_MT_above_shortintertext_sep=\dimen127
 \l_MT_below_shortintertext_sep=\dimen128
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\ams
+symb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\ams
+fonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+))
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsth
+m.sty"
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks21
 \thm@bodyfont=\toks22
@@ -148,33 +185,51 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@postskip=\skip51
 \thm@headsep=\skip52
 \dth@everypar=\toks26
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\titling\titling.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titling\titl
+ing.sty"
 Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip53
 \thanksmargin=\skip54
 \droptitle=\skip55
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\polyglossia\polyglossia.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\polyglossia\
+polyglossia.sty"
 Package: polyglossia 2015/03/25 v1.42.4 Alternative to Babel for XeLaTeX and Lu
 aLaTeX
-("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\etoolbox\eto
+olbox.sty"
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count106
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\makecmds\makecmds.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\makecmds\mak
+ecmds.sty"
 Package: makecmds 2009/09/03 v1.0a extra command making commands
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xkeyval\xkey
+val.sty"
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex" ("C:\Program Fil
-es\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xk
+eyval.tex"
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xk
+vutils.tex"
 \XKV@toks=\toks27
 \XKV@tempa@toks=\toks28
 )
 \XKV@depth=\count107
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec.sty" ("C:\Program 
-Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty"
-Package: expl3 2017/09/18 L3 programming layer (loader) 
-("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex"
-Package: expl3 2017/09/18 L3 programming layer (code)
+))
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fontspec\fon
+tspec.sty"
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\exp
+l3.sty"
+Package: expl3 2017/07/19 L3 programming layer (loader) 
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\exp
+l3-code.tex"
+Package: expl3 2017/07/19 L3 programming layer (code)
 \c_max_int=\count108
 \l_tmpa_int=\count109
 \l_tmpb_int=\count110
@@ -311,21 +366,27 @@ Package: expl3 2017/09/18 L3 programming layer (code)
 \l__coffin_top_corner_dim=\dimen157
 \l__coffin_scaled_total_height_dim=\dimen158
 \l__coffin_scaled_width_dim=\dimen159
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3xdvipdfmx.def"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\l3x
+dvipdfmx.def"
 File: l3xdvidpfmx.def 2017/03/18 v L3 Experimental driver: xdvipdfmx
 \g__driver_image_int=\count186
 \l__driver_tmp_box=\box43
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty"
-Package: xparse 2017/09/18 L3 Experimental document command parser
+))
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\x
+parse\xparse.sty"
+Package: xparse 2017/07/19 L3 Experimental document command parser
 \l__xparse_current_arg_int=\count187
 \g__xparse_grabber_int=\count188
 \l__xparse_m_args_int=\count189
 \l__xparse_mandatory_args_int=\count190
 \l__xparse_v_nesting_int=\count191
 )
-Package: fontspec 2017/09/22 v2.6e Font selection for XeLaTeX and LuaLaTeX
-("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec-xetex.sty"
-Package: fontspec-xetex 2017/09/22 v2.6e Font selection for XeLaTeX and LuaLaTe
+Package: fontspec 2017/08/14 v2.6d Font selection for XeLaTeX and LuaLaTeX
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fontspec\fon
+tspec-xetex.sty"
+Package: fontspec-xetex 2017/08/14 v2.6d Font selection for XeLaTeX and LuaLaTe
 X
 \l__fontspec_script_int=\count192
 \l__fontspec_language_int=\count193
@@ -339,196 +400,201 @@ X
 \l__fontspec_tmpb_dim=\dimen161
 \l__fontspec_tmpc_dim=\dimen162
 \g__file_internal_ior=\read1
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc
+.sty"
 Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\tuenc.def"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\tuenc.d
+ef"
 File: tuenc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TU on input line 82.
 ))
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \fontspec with sig. 'O{}mO{}' on line 479.
+. Defining command \fontspec with sig. 'O{}mO{}' on line 474.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setmainfont with sig. 'O{}mO{}' on line 483.
+. Defining command \setmainfont with sig. 'O{}mO{}' on line 485.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setsansfont with sig. 'O{}mO{}' on line 487.
+. Defining command \setsansfont with sig. 'O{}mO{}' on line 505.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setmonofont with sig. 'O{}mO{}' on line 491.
+. Defining command \setmonofont with sig. 'O{}mO{}' on line 525.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setmathrm with sig. 'O{}mO{}' on line 495.
+. Defining command \setromanfont with sig. 'O{}mO{}' on line 545.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setboldmathrm with sig. 'O{}mO{}' on line 499.
+. Defining command \setmathrm with sig. 'O{}mO{}' on line 549.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setmathsf with sig. 'O{}mO{}' on line 503.
+. Defining command \setboldmathrm with sig. 'O{}mO{}' on line 557.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setmathtt with sig. 'O{}mO{}' on line 507.
+. Defining command \setmathsf with sig. 'O{}mO{}' on line 565.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \setromanfont with sig. 'O{}mO{}' on line 511.
+. Defining command \setmathtt with sig. 'O{}mO{}' on line 573.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontfamily with sig. 'mO{}mO{}' on line 515.
+. Defining command \newfontfamily with sig. 'mO{}mO{}' on line 588.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontface with sig. 'mO{}mO{}' on line 519.
+. Defining command \newfontface with sig. 'mO{}mO{}' on line 605.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \defaultfontfeatures with sig. 't+om' on line 523.
+. Defining command \defaultfontfeatures with sig. 't+om' on line 616.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \addfontfeatures with sig. 'm' on line 527.
+. Defining command \addfontfeatures with sig. 'm' on line 647.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \addfontfeature with sig. 'm' on line 531.
+. Defining command \newfontfeature with sig. 'mm' on line 674.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontfeature with sig. 'mm' on line 535.
+. Defining command \newAATfeature with sig. 'mmmm' on line 688.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newAATfeature with sig. 'mmmm' on line 539.
+. Defining command \newopentypefeature with sig. 'mmm' on line 702.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newopentypefeature with sig. 'mmm' on line 543.
+. Defining command \newICUfeature with sig. 'mmm' on line 722.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newICUfeature with sig. 'mmm' on line 547.
+. Defining command \aliasfontfeature with sig. 'mm' on line 726.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \aliasfontfeature with sig. 'mm' on line 551.
+. Defining command \aliasfontfeatureoption with sig. 'mmm' on line 747.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \aliasfontfeatureoption with sig. 'mmm' on line 555.
+. Defining command \newfontscript with sig. 'mm' on line 780.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontscript with sig. 'mm' on line 559.
+. Defining command \newfontlanguage with sig. 'mm' on line 784.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontlanguage with sig. 'mm' on line 563.
+. Defining command \DeclareFontsExtensions with sig. 'm' on line 788.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \DeclareFontsExtensions with sig. 'm' on line 567.
+. Defining command \IfFontFeatureActiveTF with sig. 'mmm' on line 799.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \IfFontFeatureActiveTF with sig. 'mmm' on line 571.
+. Defining command \EncodingCommand with sig. 'mO{}m' on line 3538.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \EncodingCommand with sig. 'mO{}m' on line 3563.
+. Defining command \EncodingAccent with sig. 'mm' on line 3544.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \EncodingAccent with sig. 'mm' on line 3569.
+. Defining command \EncodingSymbol with sig. 'mm' on line 3550.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \EncodingSymbol with sig. 'mm' on line 3575.
+. Defining command \EncodingComposite with sig. 'mmm' on line 3556.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \EncodingComposite with sig. 'mmm' on line 3581.
+. Defining command \EncodingCompositeCommand with sig. 'mmm' on line 3562.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \EncodingCompositeCommand with sig. 'mmm' on line 3587.
+. Defining command \DeclareUnicodeEncoding with sig. 'mm' on line 3587.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \DeclareUnicodeEncoding with sig. 'mm' on line 3612.
+. Defining command \UndeclareSymbol with sig. 'm' on line 3593.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \UndeclareSymbol with sig. 'm' on line 3618.
+. Defining command \UndeclareComposite with sig. 'mm' on line 3601.
 .................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \UndeclareComposite with sig. 'mm' on line 3626.
-.................................................
-("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec.cfg")
-LaTeX Info: Redefining \itshape on input line 3804.
-LaTeX Info: Redefining \slshape on input line 3809.
-LaTeX Info: Redefining \scshape on input line 3814.
-LaTeX Info: Redefining \upshape on input line 3819.
-LaTeX Info: Redefining \em on input line 3849.
-LaTeX Info: Redefining \emph on input line 3874.
-LaTeX Info: Redefining \- on input line 3925.
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fontspec\fon
+tspec.cfg")
+LaTeX Info: Redefining \itshape on input line 3786.
+LaTeX Info: Redefining \slshape on input line 3791.
+LaTeX Info: Redefining \scshape on input line 3796.
+LaTeX Info: Redefining \upshape on input line 3801.
+LaTeX Info: Redefining \em on input line 3831.
+LaTeX Info: Redefining \emph on input line 3856.
+LaTeX Info: Redefining \- on input line 3907.
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \oldstylenums with sig. 'm' on line 4020.
+. Redefining command \oldstylenums with sig. 'm' on line 4002.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \liningnums with sig. 'm' on line 4024.
+. Defining command \liningnums with sig. 'm' on line 4006.
 .................................................
-)) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+))
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\i
+fluatex.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
 \xpg@normalclass=\XeTeXcharclass1
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\polyglossia\gloss-french.ldf"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\polyglossia\
+gloss-french.ldf"
 File: gloss-french.ldf polyglossia: module for french
 \french@punctthin=\XeTeXcharclass2
 \french@punctthick=\XeTeXcharclass3
@@ -587,17 +653,27 @@ LaTeX Font Info:    ... okay on input line 57.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\gra
+phicx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\gra
+phics.sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\tri
+g.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+)
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg
+\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 99.
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\xetex.def"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def
+\xetex.def"
 File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen163
@@ -661,32 +737,31 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 57.
 LaTeX Font Info:    Try loading font information for U+msa on input line 58.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\ums
+a.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 58.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+
+("C:\Users\Will Jallet\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\ums
+b.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 ]
-Overfull \hbox (53.42885pt too wide) detected at line 122
-[]
- []
-
-
-Overfull \hbox (43.48952pt too wide) detected at line 145
+Overfull \hbox (53.42885pt too wide) detected at line 119
 []
  []
 
 [2] [3] (rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 13346 strings out of 427823
- 277437 string characters out of 3152321
- 377045 words of memory out of 3000000
- 17244 multiletter control sequences out of 15000+200000
+ 13335 strings out of 427827
+ 278264 string characters out of 3147262
+ 376011 words of memory out of 3000000
+ 17229 multiletter control sequences out of 15000+200000
  536561 words of font info for 58 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  41i,12n,35p,10420b,240s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on rapport.xdv (3 pages, 25008 bytes).
+Output written on rapport.xdv (3 pages, 29796 bytes).
