@@ -18,7 +18,6 @@
 \newcommand{\mev}[1]{\mathcal{M}_{#1}}
 \newcommand{\dif}[1][{}]{\mathop{}\!\mathrm{d}^{#1}}
 
-\newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
@@ -26,9 +25,9 @@
 \newcommand{\KK}{\mathbb{K}}
 \newcommand{\PP}{\mathbb{P}}
 \DeclarePairedDelimiter{\zintcc}{[\![}{]\!]}
-\DeclarePairedDelimiter{\zintco}{[\![}{[\![}
-\DeclarePairedDelimiter{\zintoo}{]\!]}{[\![}
-\DeclarePairedDelimiter{\zintoc}{]\!]}{]\!]}
+
+%%% Fonts %%%
+\setmainfont{XITS}
 
 %%% Titling %%%
 
@@ -49,9 +48,6 @@ Promotion X2016}
 \theoremstyle{definition}
 \newtheorem{ques}{Question}
 
-%%% Font %%%
-%\setmainfont{Times New Roman}
-
 \setlength{\parindent}{0pt}
 
 \begin{document}
@@ -66,14 +62,13 @@ Promotion X2016}
 On rappelle l'équation de Laplace
 \begin{equation}\label{eqLapl}
 \left\{
-\begin{array}{l}
+\begin{array}{c}
 -\Delta u + u = f\ \text{sur}\ \Omega \\
-\frac{\partial u}{\partial n} = 0\ \text{sur}\ \partial\Omega \\
-u \in C^2(\overline{\Omega})
+\dfrac{\partial u}{\partial n} = 0\ \text{sur}\ \partial\Omega
 \end{array}
 \right.
 \end{equation}
-où $\Omega = (0,1)^2$.
+où $u \in C^2(\overline{\Omega})$, $\Omega = (0,1)^2$.
 
 Supposons que la fonction $u:\overline\Omega\longrightarrow\RR$ soit une solution de \eqref{eqLapl}. Soit $v\in V$. Par une intégration par parties, on obtient
 \begin{align*}
@@ -91,13 +86,18 @@ et
 \end{equation}
 
 
-Réciproquement, si $u$ est une fonction de classe $C^2$ sur $\overline\Omega$ qui vérifie \eqref{laplVar} et $\partial u/\partial n = 0$ sur le bord de $\Omega$, une intégration par parties permet de retrouver 
+Réciproquement, si $u$ est une fonction de classe $C^2$ sur $\overline\Omega$ qui vérifie \eqref{laplVar}, une intégration par parties permet de retrouver 
 \[
-\forall v\in V\quad  -\int_\Omega \Delta u\, v + \int_\Omega uv = \int_\Omega fv \ \text{donc}\
-\int_\Omega (-\Delta u + u -f)v = 0.
+\forall v\in V\quad 
+\int_{\partial\Omega} \frac{\partial u}{\partial n}v -\int_\Omega \Delta u\, v + \int_\Omega uv = \int_\Omega fv
 \]
-D'après un lemme du cours, cela entraîne que\[ -\Delta u+ u -f = 0  \]
-donc $u$ est solution de \eqref{eqLapl}.
+En particulier $-\int_\Omega \Delta u\,v + \int_\Omega uv = \int_\Omega fv $ quand $v=0$ sur $\partial\Omega$. D'après un lemme du cours, cela entraîne que\[ -\Delta u+ u -f = 0  \]
+et en réinjectant dans l'équation intégrale plus haut
+\[
+\forall v\in V\quad 
+\int_{\partial\Omega}\frac{\partial u}{\partial n}v = 0\quad \text{d'où}\quad \frac{\partial u}{\partial n} = 0
+\]
+et $u$ est solution de \eqref{eqLapl}.
 
 \end{ques}
 
@@ -114,7 +114,7 @@ donc
 \int_{\Omega}\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_l) 
 &=
 \int_{\Omega} \phi'_i(x)\phi_j(y)\phi_k'(x)\phi_l(y) + \phi_i(x)\phi_j'(y)\phi_k(x)\phi_l'(y)\,dx\,dy \\
-&= \int_{0}^{1}\phi'_i\phi_k'\,dx\int_0^1\phi_j\phi_l\,dy + \int_{0}^{1}\phi_i\phi_k\,dx\int_0^1\phi_j'\phi_l'\,dy\ \text{(théorème de Fubini)} \\
+&= \int_{0}^{1}\phi'_i\phi_k' \int_0^1\phi_j\phi_l + \int_{0}^{1}\phi_i\phi_k \int_0^1\phi_j'\phi_l' \ \text{(théorème de Fubini)} \\
 &= D_{i,k}M_{j,l} + M_{i,k}D_{j,l}.
 \end{align*}
 
@@ -126,7 +126,7 @@ Ainsi, avec $u_h = \sum_{i,j=0}^{I}U_{i,j}\phi_i\otimes\phi_j$ on obtient
 \end{align*}
 On a de plus
 \[
-\int_\Omega (\phi_i\otimes\phi_j)(x,y)(\phi_k\otimes\phi_l)(x,y)\,dx\,dy = \int_0^1 \phi_i \phi_k\,dx \int_0^1 \phi_j \phi_l\,dy = M_{i,k}M_{k,l}
+\int_\Omega (\phi_i\otimes\phi_j)(x,y)(\phi_k\otimes\phi_l)(x,y)\,dx\,dy = \int_0^1 \phi_i \phi_k \int_0^1 \phi_j \phi_l = M_{i,k}M_{k,l}
 \]
 d'où
 \begin{equation}\tag{b}\label{eq:b}
@@ -139,13 +139,13 @@ En supposant que $u_h$ est une solution de \eqref{laplVar}, sommer \eqref{eq:a} 
 \int_\Omega\nabla u_h\cdot \nabla\phi_k\otimes\phi_l + \int_\Omega u_h (\phi_k\otimes\phi_l)
 = F_{k,l}.
 \end{equation}
-On notera cela sous la forme $T(U) = F$ dans la suite, où $T$ est un endomorphisme de $\RR^{(I+1)^2}$. On remarquera que $T$ est symétrique.
+On notera cela sous la forme $TU_h = F$ dans la suite.
 
 Réciproquement, si le vecteur $U$ vérifie le système linéaire \eqref{laplDiscr}, alors la fonction $u_h = \sum_{i,j=0}^{I}U_{i,j}\phi_i\otimes\phi_j$ vérifie \eqref{laplVar} pour $v\in V_h$.
 
 Le problème \eqref{laplDiscr} est bien posé puisque \eqref{laplVar} l'est: si $u_1$ et $u_2$ vérifient \eqref{laplVar}, alors $w:= u_2-u_1$ vérifie
 \[
-\int_\Omega |\nabla w|^2 + \int_\Omega w^2 = \|w\|_{H^1(\Omega)}^2 = 0
+\int_\Omega \left|\nabla w\right|^2 + \int_\Omega w^2 = \|w\|_{H^1(\Omega)}^2 = 0
 \]
 donc $w = 0$, $u_2 = u_1$.
 
@@ -155,18 +155,19 @@ Si on travaille sur un pavé $\Omega = (0,1)^d$ en dimension $d$ avec la même m
 
 
 \begin{ques}
-Si $U\in \RR^{(I+1)^2}$ et $u_h = \sum_{i,j=0}^I\phi_i\otimes\phi_j$, remarquons qu'avec la notation introduite plus haut
+Si $U_h\in \RR^{(I+1)^2}$ et $u_h = \sum_{i,j=0}^I U_{i,j}\phi_i\otimes\phi_j$, remarquons qu'avec la notation introduite plus haut
 \[
-\mathcal{E}(u_h) = \frac 12\int_\Omega |\nabla u_h|^2 + \frac 12\int_\Omega u_h^2 - \int_\Omega fu_h = \frac 12\langle U,T(U)\rangle - \langle U,F\rangle =: \mathcal J(U).
+\mathcal{E}(u_h) = \frac 12\int_\Omega |\nabla u_h|^2 + \frac 12\int_\Omega u_h^2 - \int_\Omega fu_h = \frac 12\langle TU_h,U_h\rangle - \langle U_h,F\rangle.
 \]
 
-Le membre de droite est une fonction $\mathcal J$ de classe $C^1$ sur $\RR^{(I+1)^2}$ dont le gradient est $\nabla \mathcal J(U) = T(U) - F$ ce qui garantit qu'un minimum de l'énergie $\mathcal E$ vérifie \eqref{laplDiscr}. De plus, la dérivée seconde de $\mathcal J$ est l'application bilinéaire
+Le membre de droite est une fonction de classe $C^1$ sur $\RR^{(I+1)^2}$ dont le gradient est $TU_h - F$, sa dérivée seconde est l'application bilinéaire définie positive
 \[
-\dif[2]\mathcal J(U):(X,Y)\longmapsto \langle T(X),Y\rangle
+(X,Y)\in \RR^{(I+1)^2}\times \RR^{(I+1)^2} \longmapsto \langle TX,Y\rangle
 \]
-symétrique positive, ce qui prouve la convexité de $\mathcal J$.
-
-Réciproquement, si $U$ est solution de \eqref{laplDiscr} c'est-à-dire si $U$ est un point critique de $\mathcal J$, sa convexité donne que $U$ en est un minimum local donc que $u_h = \sum_{i,j}U_{i,j}\phi_i\otimes\phi_j$ est un minimum local de $\mathcal E$.
+On en tire que $U_h$ vérifie \eqref{laplDiscr} si et seulement si c'est un minimum du membre de droite, donc si et seulement si $u_h$ est un minimum de $\mathcal{E}$ restreint à $V_h\otimes V_h$:
+\begin{equation}
+u_h = \sum_{i,j=0}^I U_{i,j}\phi_i\otimes\phi_j = \arg\min_{v_h\in V_h\otimes V_h}\mathcal{E}(v_h)
+\end{equation}
 \end{ques}
 
 
@@ -174,15 +175,58 @@ Réciproquement, si $U$ est solution de \eqref{laplDiscr} c'est-à-dire si $U$ e
 L'algorithme est glouton puisqu'il consiste à faire une optimisation locale à chaque étape afin de trouver ce qui sera un optimum local de la fonction $\mathcal E$.
 
 Si $N$ est le numéro de la dernière itération, il faut stocker les en mémoire les fonctions $r_n,i\in V_h$, $i\in\zintcc{1,d}$ et $1\leq n\leq N$, ce qui donne, en supposant les éléments de $V_h$ représentés selon leur coordonnées avec $I+1$ réels, $(I+1)Nd$ nombres réels à stocker.
+
+Supposons une représentation séparée de la fonction $f$
+\[
+f(x_1,\ldots,x_d) = \sum_{p=1}^{P} f_1^p(x_1)\ldots f_d^p(x_d)
+\]
+Alors, les coefficients du vecteur $F = (\int_\Omega f\phi_{i_1}\otimes\cdots\otimes\phi_{i_d})$ s'écrivent grâce au théorème de Fubini
+\[
+F_{i_1,\ldots,i_d} = \sum_{p=1}^P\prod_{j=1}^{d}\int_0^1 f_j^p(x)\phi_{i_j}(x)\,dx
+\]
+et pour les obtenir, il suffit de calculer et stocker les $Pd(I+1)$ intégrales
+\[
+\int_0^1 f_j^p\phi_i,\quad j\in\zintcc{1,d},\,i\in\zintcc{0,I},\,p\in\zintcc{1,P}.
+\]
+
+Si $f$ n'admet pas de représentation séparée, il faut alors calculer et stocker les $(I+1)^d$ intégrales $\int_\Omega f\phi_{i_1}\otimes\cdots\otimes\phi_{i_d}$, ce qui fait nettement plus de données.
 \end{ques}
 
-
+On considère le problème de minimisation
+\begin{equation}
+(r_n,s_n) \in \arg\min_{(r,s)\in V_h\times V_h} \mathcal{E}(u_{n-1}+r\otimes s).
+\end{equation}
 
 \section{Équations d'Euler et convergence de l'algorithme}
 
+\begin{ques}
+On a montré plus haut que la restriction de l'énergie $\mathcal{E}:C^1(\overline{\Omega})\longrightarrow \RR$ à l'espace $V_h\otimes V_h$ admet un minimum. Il en est donc de même de $\mathcal J:(r,s)\in V_h\times V_h\longmapsto \mathcal{E}(u_{n-1} + r\otimes s)$ quel que soit $u$ dans $V$ (puisque $r\otimes s\in V_h\otimes V_h$), et $(r,s)$ en est un minimum si et seulement si c'en est un point critique.
+
+La différentielle de $\mathcal{J}$ est
+\begin{align*}
+d_{(r,s)}\mathcal J(\delta r,\delta s) 
+&= d\mathcal{E}(u_{n-1}+r\otimes s)\cdot
+\underbrace{\left(
+d_{(r,s)}(u_{n-1}+r\otimes s)(\delta r,\delta s)\right)
+}_{= \delta r\otimes s + r\otimes\delta s} \\
+&= \int_\Omega \nabla(u_{n-1}+r\otimes s)\cdot\nabla(\delta r\otimes s + r\otimes\delta s)
++ \int_\Omega (u_{n-1}+r\otimes s)(\delta r\otimes s + r\otimes\delta s)
+\\ &\quad - \int_\Omega f(\delta r\otimes s + r\otimes\delta s).
+\end{align*}
+
+On en déduit que $(r_n,s_n)$ est un point critique de $\mathcal{J}$ si et seulement si $d_{(r_n,s_n)}\mathcal{J}(\delta r,\delta s) = 0$ pour tout $(\delta r,\delta s)\in V_h\times V_h$, soit
+\begin{align}
+\int_\Omega &\nabla(r_n\otimes s_n)\cdot\nabla(\delta r\otimes s_n + r_n\otimes \delta s) + \int_\Omega (r_n\otimes s_n)(\delta r\otimes s_n + r_n\otimes \delta s) \nonumber \\
+&=\int_\Omega f(\delta r\otimes s_n + r_n\otimes\delta s) - \int_\Omega \nabla u_{n-1}\cdot\nabla(\delta r\otimes s_n + r_n\otimes\delta s) - \int_\Omega u_{n-1}(\delta r\otimes s_n + r_n\otimes\delta s)
+\end{align}
+
+\begin{align*}
+-r_n''(x)\int_0^1 s_n^2 + r_n(x)\int_{0}^{1}{s_n'}^2 &= \int_{0}^{1}(f(x,y)+\Delta u_{n-1}(x,y) - u_{n-1}(x,y))s_n(y)\,dy \\
+-s_n''(y)\int_0^1 r_n^2 + s_n(y)\int_{0}^{1}{r_n'}^2 &= \int_{0}^{1}(f(x,y)+\Delta u_{n-1}(x,y) - u_{n-1}(x,y))r_n(x)\,dx
+\end{align*}
 
 
-
+\end{ques}
 
 
 
