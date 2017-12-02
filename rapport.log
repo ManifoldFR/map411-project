@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2017.12.1)  2 DEC 2017 18:05
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2017.12.1)  3 DEC 2017 00:05
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -742,23 +742,33 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 ] [2] [3]
-Overfull \hbox (25.87883pt too wide) detected at line 215
+Overfull \hbox (25.87883pt too wide) detected at line 216
 []
  []
 
 
-Overfull \hbox (30.73027pt too wide) detected at line 221
+Overfull \hbox (30.73027pt too wide) detected at line 222
 []
  []
 
-[4] [5] (rapport.aux) ) 
+[4]
+Overfull \hbox (55.53345pt too wide) detected at line 271
+[]
+ []
+
+[5]
+Overfull \hbox (50.06157pt too wide) detected at line 280
+[]
+ []
+
+[6] (rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 13405 strings out of 427839
- 278456 string characters out of 3152538
- 378632 words of memory out of 3000000
- 17274 multiletter control sequences out of 15000+200000
+ 13407 strings out of 427839
+ 278468 string characters out of 3152538
+ 379650 words of memory out of 3000000
+ 17276 multiletter control sequences out of 15000+200000
  536617 words of font info for 65 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  45i,16n,65p,10463b,241s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on rapport.pdf (5 pages).
+Output written on rapport.pdf (6 pages).

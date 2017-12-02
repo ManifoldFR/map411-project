@@ -164,7 +164,7 @@ Le membre de droite est une fonction de classe $C^1$ sur $\RR^{(I+1)^2}$ dont le
 \[
 (X,Y)\in \RR^{(I+1)^2}\times \RR^{(I+1)^2} \longmapsto \langle TX,Y\rangle
 \]
-On en tire que $U_h$ vérifie \eqref{laplDiscr} si et seulement si c'est un minimum du membre de droite, donc si et seulement si $u_h$ est un minimum de $\mathcal{E}$ restreint à $V_h\otimes V_h$:
+On en tire que $U_h$ est solution de \eqref{laplDiscr} si et seulement si c'est un minimum du membre de droite, \fbox{si et seulement si $u_h$ est un minimum de $\mathcal{E}$ restreint à $V_h\otimes V_h$:}
 \begin{equation}
 u_h = \sum_{i,j=0}^I U_{i,j}\phi_i\otimes\phi_j = \arg\min_{v_h\in V_h\otimes V_h}\mathcal{E}(v_h)
 \end{equation}
@@ -192,12 +192,13 @@ et pour les obtenir, il suffit de calculer et stocker les $Pd(I+1)$ intégrales
 Si $f$ n'admet pas de représentation séparée, il faut alors calculer et stocker les $(I+1)^d$ intégrales $\int_\Omega f\phi_{i_1}\otimes\cdots\otimes\phi_{i_d}$, ce qui fait nettement plus de données.
 \end{ques}
 
+\section{Équations d'Euler et convergence de l'algorithme}
+
 On considère le problème de minimisation
 \begin{equation}
 (r_n,s_n) \in \arg\min_{(r,s)\in V_h\times V_h} \mathcal{E}(u_{n-1}+r\otimes s).
 \end{equation}
 
-\section{Équations d'Euler et convergence de l'algorithme}
 
 \begin{ques}
 On a montré plus haut que la restriction de l'énergie $\mathcal{E}:C^1(\overline{\Omega})\longrightarrow \RR$ à l'espace $V_h\otimes V_h$ admet un minimum. Il en est donc de même de $\mathcal J:(r,s)\in V_h\times V_h\longmapsto \mathcal{E}(u_{n-1} + r\otimes s)$ quel que soit $u$ dans $V$ (puisque $r\otimes s\in V_h\otimes V_h$), et $(r,s)$ en est un minimum si et seulement si c'en est un point critique.
@@ -205,7 +206,7 @@ On a montré plus haut que la restriction de l'énergie $\mathcal{E}:C^1(\overli
 La différentielle de $\mathcal{J}$ est
 \begin{align*}
 d_{(r,s)}\mathcal J(\delta r,\delta s) 
-&= d\mathcal{E}(u_{n-1}+r\otimes s)\cdot
+&= d\mathcal{E}_{u_{n-1}+r\otimes s}\cdot
 \underbrace{\left(
 d_{(r,s)}(u_{n-1}+r\otimes s)(\delta r,\delta s)\right)
 }_{= \delta r\otimes s + r\otimes\delta s} \\
@@ -215,11 +216,12 @@ d_{(r,s)}(u_{n-1}+r\otimes s)(\delta r,\delta s)\right)
 \end{align*}
 
 On en déduit que $(r_n,s_n)$ est un point critique de $\mathcal{J}$ si et seulement si $d_{(r_n,s_n)}\mathcal{J}(\delta r,\delta s) = 0$ pour tout $(\delta r,\delta s)\in V_h\times V_h$, soit
-\begin{align}
+\begin{align}\label{eq:6}
 \int_\Omega &\nabla(r_n\otimes s_n)\cdot\nabla(\delta r\otimes s_n + r_n\otimes \delta s) + \int_\Omega (r_n\otimes s_n)(\delta r\otimes s_n + r_n\otimes \delta s) \nonumber \\
 &=\int_\Omega f(\delta r\otimes s_n + r_n\otimes\delta s) - \int_\Omega \nabla u_{n-1}\cdot\nabla(\delta r\otimes s_n + r_n\otimes\delta s) - \int_\Omega u_{n-1}(\delta r\otimes s_n + r_n\otimes\delta s)
 \end{align}
 
+Réécrire cela en $\delta r=0$ et $\delta s=0$ et intégrer par parties mène au système d'équations différentielles couplées
 \begin{align*}
 -r_n''(x)\int_0^1 s_n^2 + r_n(x)\int_{0}^{1}{s_n'}^2 &= \int_{0}^{1}(f(x,y)+\Delta u_{n-1}(x,y) - u_{n-1}(x,y))s_n(y)\,dy \\
 -s_n''(y)\int_0^1 r_n^2 + s_n(y)\int_{0}^{1}{r_n'}^2 &= \int_{0}^{1}(f(x,y)+\Delta u_{n-1}(x,y) - u_{n-1}(x,y))r_n(x)\,dx
@@ -228,6 +230,77 @@ On en déduit que $(r_n,s_n)$ est un point critique de $\mathcal{J}$ si et seule
 
 \end{ques}
 
+
+\begin{ques}
+Comme $u_h$ est solution du problème variationnel \eqref{laplDiscr}, nous avons
+\[
+a(u_h,\delta r\otimes s_n + r_n\otimes \delta s) = \int_\Omega f(\delta r\otimes s_n + r_n\otimes \delta s)
+\]
+d'une part. D'autre part, remarquons que la différentielle de $\mathcal{E}$ se réécrit
+\[
+d\mathcal{E}_u(v) = a(u,v) - \int_\Omega fv
+\]
+donc la condition d'extremum portant sur $(r_n,s_n)$ se réécrit, en remarquant que $u_n = u_{n-1} + r_n\otimes s_n$
+\begin{align*}
+a(u_n,\delta r\otimes s_n + r_n\otimes\delta s) &=
+a(u_{n-1}+r_n\otimes s_n, \delta r\otimes s_n + r_n\otimes\delta s) \\
+&= \int_\Omega f(\delta r\otimes s_n + r_n\otimes\delta s).
+\end{align*}
+Ainsi,
+\[
+\boxed{a(g_n,\delta r\otimes s_n + r_n\otimes\delta s) = a(u_h-u_n,\delta r\otimes s_n + r_n\otimes\delta s) = 0.}
+\]
+En particulier, avec $\delta r = r_n$ et $\delta s= s_n$
+\[
+2a(g_n,r_n\otimes s_n) = 0.
+\]
+
+Remarquons que $g_n + r_n\otimes s_n = u_h - (u_n - r_n\otimes s_n) = u_h - u_{n-1} = g_{n-1}$, d'où par bilinéarité et symétrie de $a$
+\begin{align*}
+\boxed{a(g_{n-1},g_{n-1})} 
+&= a(g_n,g_n) + \underbrace{2a(g_n,r_n\otimes s_n)}_{=0} + a(r_n\otimes s_n,r_n\otimes s_n) \\
+&\boxed{= a(g_n,g_n) + a(r_n\otimes s_n,r_n\otimes s_n).}
+\end{align*}
+
+La remarque plus haut permet d'écrire
+\begin{align*}
+\boxed{E_n = \mathcal{E}(u_n) - \mathcal{E}(u_{n-1})}
+&= \frac 12a(u_n,u_n) - \frac 12 a(u_{n-1},u_{n-1}) - \int_\Omega f(r_n\otimes s_n) \\
+&= \frac 12 a(r_n\otimes s_n,r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) - \int_\Omega f(r_n\otimes s_n) \\
+&\boxed{= \frac 12\int_\Omega |\nabla(r_n\otimes s_n)|^2 + \frac 12\int_\Omega |r_n\otimes s_n|^2 - \int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n).}\tag{d}\label{eq:d}
+\end{align*}
+
+Il est immédiat que les deux premiers termes du membre de droite valent $\frac 12a(r_n\otimes s_n)$.
+
+Remarquons que le membre de gauche de \eqref{eq:6} est $2a(r_n\otimes s_n,r_n\otimes s_n)$ en $\delta r=r_n$, $\delta s=s_n$. Les deux derniers termes du membre de droite de \eqref{eq:d} vérifient donc:
+\begin{align*}
+-\int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) 
+&= -\int_\Omega f(r_n\otimes s_n) + \int_\Omega \nabla u_{n-1}\cdot\nabla(r_n\otimes s_n) + \int_\Omega u_{n-1}(r_n\otimes s_n) \\
+&= -a(r_n\otimes s_n,r_n\otimes s_n)
+\end{align*}
+
+On en déduit donc que \eqref{eq:d} se réécrit
+\[
+\boxed{E_n = -\frac 12a(r_n\otimes s_n,r_n \otimes s_n).}
+\]
+
+On a montré plus haut que $a(g_{n-1},g_{n-1}) = a(g_n,g_n) + a(r_n\otimes s_n,r_n\otimes s_n)$ ce qui entraîne puisque $a(r_n\otimes s_n,r_n\otimes s_n)\geq 0$ que la suite de réels positifs $\left(a(g_n,g_n)\right)_n$ est décroissante, donc converge. On en tire que la série télescopique
+\(
+\sum_{n\geq 1} \left(a(g_{n-1},g_{n-1}) - a(g_n,g_n) \right)
+\)
+converge. Or c'est exactement la série
+\[
+\sum_{n\geq 1} a(r_n\otimes s_n,r_n\otimes s_n),
+\]
+dont on déduit la convergence, puis celle de la série $-2\sum_{n\geq 1}E_n$ et l'égalité de leurs sommes d'après l'identité plus haut.
+\end{ques}
+
+\begin{ques}
+Le raisonnement précédent montre que la suite $(g_n)_{n\geq 1}$ de $V_h\otimes V_h$ est bornée en norme $H^1$ (la norme $v\longmapsto \sqrt{a(v,v)}$). Notons que cette norme équipe l'espace de dimension finie $V_h\otimes V_h$ d'une structure d'espace normé de dimension finie. Le théorème de Bolzano-Weierstrass que $(g_n)$ admet une valeur d'adhérence $g_\infty$ dans $V_h\otimes V_h$.
+
+
+Comme $r_n,s_n$ réalise l'optimum 
+\end{ques}
 
 
 
