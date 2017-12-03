@@ -1,8 +1,11 @@
 \documentclass[11pt]{article}
-\usepackage[a4paper]{geometry}
+\usepackage[a4paper,hmargin=3.2cm]{geometry}
 \usepackage{mathtools}
 \usepackage{amssymb,amsthm,amsfonts}
 \usepackage{titling}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{polyglossia}
 \setdefaultlanguage{french}
 
@@ -27,7 +30,7 @@
 \DeclarePairedDelimiter{\zintcc}{[\![}{]\!]}
 
 %%% Fonts %%%
-\setmainfont{XITS}
+%\setmainfont{XITS}
 
 %%% Titling %%%
 
@@ -111,33 +114,33 @@ Pour tous $i$ et $j$ de $\zintcc{0,I}$,
 \]
 donc 
 \begin{align*}
-\int_{\Omega}\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_l) 
+\int_{\Omega}\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_\ell) 
 &=
-\int_{\Omega} \phi'_i(x)\phi_j(y)\phi_k'(x)\phi_l(y) + \phi_i(x)\phi_j'(y)\phi_k(x)\phi_l'(y)\,dx\,dy \\
-&= \int_{0}^{1}\phi'_i\phi_k' \int_0^1\phi_j\phi_l + \int_{0}^{1}\phi_i\phi_k \int_0^1\phi_j'\phi_l' \ \text{(théorème de Fubini)} \\
-&= D_{i,k}M_{j,l} + M_{i,k}D_{j,l}.
+\int_{\Omega} \phi'_i(x)\phi_j(y)\phi_k'(x)\phi_\ell(y) + \phi_i(x)\phi_j'(y)\phi_k(x)\phi_\ell'(y)\,dx\,dy \\
+&= \int_{0}^{1}\phi'_i\phi_k' \int_0^1\phi_j\phi_\ell + \int_{0}^{1}\phi_i\phi_k \int_0^1\phi_j'\phi_\ell' \ \text{(théorème de Fubini)} \\
+&= D_{i,k}M_{j,\ell} + M_{i,k}D_{j,\ell}.
 \end{align*}
 
 Ainsi, avec $u_h = \sum_{i,j=0}^{I}U_{i,j}\phi_i\otimes\phi_j$ on obtient
 \begin{align*}\tag{a}\label{eq:a}
-\int_{\Omega} \nabla u_h(x,y)\cdot \nabla \phi_k\otimes\phi_l (x,y)\,dx\,dy 
-&= \sum_{i,j=0}^{I}U_{i,j} \int_\Omega\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_l) \\
-&= \sum_{i,j=0}^{I}U_{i,j} (D_{i,k}M_{j,l}+M_{i,k}D_{j,l}).
+\int_{\Omega} \nabla u_h(x,y)\cdot \nabla \phi_k\otimes\phi_\ell (x,y)\,dx\,dy 
+&= \sum_{i,j=0}^{I}U_{i,j} \int_\Omega\nabla(\phi_i\otimes\phi_j)\cdot\nabla(\phi_k\otimes\phi_\ell) \\
+&= \sum_{i,j=0}^{I}U_{i,j} (D_{i,k}M_{j,\ell}+M_{i,k}D_{j,\ell}).
 \end{align*}
 On a de plus
 \[
-\int_\Omega (\phi_i\otimes\phi_j)(x,y)(\phi_k\otimes\phi_l)(x,y)\,dx\,dy = \int_0^1 \phi_i \phi_k \int_0^1 \phi_j \phi_l = M_{i,k}M_{k,l}
+\int_\Omega (\phi_i\otimes\phi_j)(x,y)(\phi_k\otimes\phi_\ell)(x,y)\,dx\,dy = \int_0^1 \phi_i \phi_k \int_0^1 \phi_j \phi_\ell = M_{i,k}M_{k,\ell}
 \]
 d'où
 \begin{equation}\tag{b}\label{eq:b}
-\int_\Omega u_h(x,y)\phi_k\otimes\phi_l = \sum_{i,j=0}^{I}U_{i,j}M_{i,k}M_{j,l}
+\int_\Omega u_h(x,y)\phi_k\otimes\phi_\ell = \sum_{i,j=0}^{I}U_{i,j}M_{i,k}M_{j,\ell}
 \end{equation}
 
-En supposant que $u_h$ est une solution de \eqref{laplVar}, sommer \eqref{eq:a} et \eqref{eq:b} donne pour tous $k,l\in\zintcc{0,I}$
+En supposant que $u_h$ est une solution de \eqref{laplVar}, sommer \eqref{eq:a} et \eqref{eq:b} donne pour tous $k,\ell\in\zintcc{0,I}$
 \begin{equation}\label{laplDiscr}
-\sum_{i,j=0}^{I}U_{i,j}(D_{i,k}M_{j,l} + M_{i,k}D_{j,l} + M_{i,k}M_{j,l}) =
-\int_\Omega\nabla u_h\cdot \nabla\phi_k\otimes\phi_l + \int_\Omega u_h (\phi_k\otimes\phi_l)
-= F_{k,l}.
+\sum_{i,j=0}^{I}U_{i,j}(D_{i,k}M_{j,\ell} + M_{i,k}D_{j,\ell} + M_{i,k}M_{j,\ell}) =
+\int_\Omega\nabla u_h\cdot \nabla\phi_k\otimes\phi_\ell + \int_\Omega u_h (\phi_k\otimes\phi_\ell)
+= F_{k,\ell}.
 \end{equation}
 On notera cela sous la forme $TU_h = F$ dans la suite.
 
@@ -195,7 +198,7 @@ Si $f$ n'admet pas de représentation séparée, il faut alors calculer et stock
 \section{Équations d'Euler et convergence de l'algorithme}
 
 On considère le problème de minimisation
-\begin{equation}
+\begin{equation}\label{eq:5}
 (r_n,s_n) \in \arg\min_{(r,s)\in V_h\times V_h} \mathcal{E}(u_{n-1}+r\otimes s).
 \end{equation}
 
@@ -221,7 +224,18 @@ On en déduit que $(r_n,s_n)$ est un point critique de $\mathcal{J}$ si et seule
 &=\int_\Omega f(\delta r\otimes s_n + r_n\otimes\delta s) - \int_\Omega \nabla u_{n-1}\cdot\nabla(\delta r\otimes s_n + r_n\otimes\delta s) - \int_\Omega u_{n-1}(\delta r\otimes s_n + r_n\otimes\delta s)
 \end{align}
 
-Réécrire cela en $\delta r=0$ et $\delta s=0$ et intégrer par parties mène au système d'équations différentielles couplées
+Réécrire cela en $\delta s=0$ puis $\delta r=0$ mène au système 
+\begin{equation}\hspace*{-1cm}
+\left\{
+\begin{array}{*2{>{\displaystyle}l}}
+\int_\Omega \nabla(r_n\otimes s_n)\cdot\nabla(\delta r\otimes s_n) + \int_\Omega (r_n\otimes s_n)(\delta r\otimes s_n) 
+&= \int_\Omega (f-u_{n-1})(\delta r\otimes s_n) - \int_\Omega \nabla u_{n-1}\cdot\nabla(\delta r\otimes s_n) \\[1em]
+\int_\Omega \nabla(r_n\otimes s_n)\cdot\nabla(r_n\otimes\delta s) + \int_\Omega (r_n\otimes s_n)(r_n\otimes\delta s) 
+&= \int_\Omega (f-u_{n-1})(r_n\otimes \delta s) - \int_\Omega \nabla u_{n-1}\cdot\nabla(r_n\otimes\delta s)
+\end{array}\right.\tag{d}\label{eq:d}
+\end{equation}
+
+Intégrer par parties donne alors le système d'équations différentielles couplées
 \begin{align*}
 -r_n''(x)\int_0^1 s_n^2 + r_n(x)\int_{0}^{1}{s_n'}^2 &= \int_{0}^{1}(f(x,y)+\Delta u_{n-1}(x,y) - u_{n-1}(x,y))s_n(y)\,dy \\
 -s_n''(y)\int_0^1 r_n^2 + s_n(y)\int_{0}^{1}{r_n'}^2 &= \int_{0}^{1}(f(x,y)+\Delta u_{n-1}(x,y) - u_{n-1}(x,y))r_n(x)\,dx
@@ -232,7 +246,10 @@ Réécrire cela en $\delta r=0$ et $\delta s=0$ et intégrer par parties mène a
 
 
 \begin{ques}
-Comme $u_h$ est solution du problème variationnel \eqref{laplDiscr}, nous avons
+Remarquons tout de suite que d'après ce qui précède, \fbox{$a$ est un produit scalaire.}
+
+\begin{itemize}
+\item Comme $u_h$ est solution du problème variationnel \eqref{laplVar}, nous avons
 \[
 a(u_h,\delta r\otimes s_n + r_n\otimes \delta s) = \int_\Omega f(\delta r\otimes s_n + r_n\otimes \delta s)
 \]
@@ -255,53 +272,181 @@ En particulier, avec $\delta r = r_n$ et $\delta s= s_n$
 2a(g_n,r_n\otimes s_n) = 0.
 \]
 
-Remarquons que $g_n + r_n\otimes s_n = u_h - (u_n - r_n\otimes s_n) = u_h - u_{n-1} = g_{n-1}$, d'où par bilinéarité et symétrie de $a$
+\item Remarquons que $g_n + r_n\otimes s_n = u_h - (u_n - r_n\otimes s_n) = u_h - u_{n-1} = g_{n-1}$, d'où par bilinéarité et symétrie de $a$
 \begin{align*}
 \boxed{a(g_{n-1},g_{n-1})} 
 &= a(g_n,g_n) + \underbrace{2a(g_n,r_n\otimes s_n)}_{=0} + a(r_n\otimes s_n,r_n\otimes s_n) \\
 &\boxed{= a(g_n,g_n) + a(r_n\otimes s_n,r_n\otimes s_n).}
 \end{align*}
 
-La remarque plus haut permet d'écrire
-\begin{align*}
+\item La remarque plus haut permet d'écrire
+\begin{align*}\hspace*{-1cm}
 \boxed{E_n = \mathcal{E}(u_n) - \mathcal{E}(u_{n-1})}
 &= \frac 12a(u_n,u_n) - \frac 12 a(u_{n-1},u_{n-1}) - \int_\Omega f(r_n\otimes s_n) \\
 &= \frac 12 a(r_n\otimes s_n,r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) - \int_\Omega f(r_n\otimes s_n) \\
-&\boxed{= \frac 12\int_\Omega |\nabla(r_n\otimes s_n)|^2 + \frac 12\int_\Omega |r_n\otimes s_n|^2 - \int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n).}\tag{d}\label{eq:d}
+&\boxed{= \frac 12\int_\Omega |\nabla(r_n\otimes s_n)|^2 + \frac 12\int_\Omega |r_n\otimes s_n|^2 - \int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n).}\tag{e}\label{eq:e}
 \end{align*}
 
-Il est immédiat que les deux premiers termes du membre de droite valent $\frac 12a(r_n\otimes s_n)$.
-
-Remarquons que le membre de gauche de \eqref{eq:6} est $2a(r_n\otimes s_n,r_n\otimes s_n)$ en $\delta r=r_n$, $\delta s=s_n$. Les deux derniers termes du membre de droite de \eqref{eq:d} vérifient donc:
-\begin{align*}
+Il est immédiat que les deux premiers termes du membre de droite valent $\frac 12a(r_n\otimes s_n)$. 
+Remarquons que le membre de gauche de \eqref{eq:6} est $2a(r_n\otimes s_n,r_n\otimes s_n)$ en $\delta r=r_n$, $\delta s=s_n$. Les deux derniers termes du membre de droite de \eqref{eq:e} vérifient donc:
+\begin{align*}\hspace*{-1cm}
 -\int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) 
 &= -\int_\Omega f(r_n\otimes s_n) + \int_\Omega \nabla u_{n-1}\cdot\nabla(r_n\otimes s_n) + \int_\Omega u_{n-1}(r_n\otimes s_n) \\
 &= -a(r_n\otimes s_n,r_n\otimes s_n)
 \end{align*}
 
-On en déduit donc que \eqref{eq:d} se réécrit
+On en déduit donc que \eqref{eq:e} se réécrit
 \[
 \boxed{E_n = -\frac 12a(r_n\otimes s_n,r_n \otimes s_n).}
 \]
 
-On a montré plus haut que $a(g_{n-1},g_{n-1}) = a(g_n,g_n) + a(r_n\otimes s_n,r_n\otimes s_n)$ ce qui entraîne puisque $a(r_n\otimes s_n,r_n\otimes s_n)\geq 0$ que la suite de réels positifs $\left(a(g_n,g_n)\right)_n$ est décroissante, donc converge. On en tire que la série télescopique
-\(
-\sum_{n\geq 1} \left(a(g_{n-1},g_{n-1}) - a(g_n,g_n) \right)
-\)
-converge. Or c'est exactement la série
+\item On a montré plus haut que $a(g_{n-1},g_{n-1}) = a(g_n,g_n) + a(r_n\otimes s_n,r_n\otimes s_n)$ ce qui entraîne la décroissance, puis la convergence, de la suite de réels positifs $\left(a(g_n,g_n)\right)_n$ (puisque $a(r_n\otimes s_n,r_n\otimes s_n)\geq 0$). Ainsi, la série télescopique $\sum_{n\geq 1} \left(a(g_{n-1},g_{n-1}) - a(g_n,g_n) \right)$, c'est-à-dire la série
 \[
 \sum_{n\geq 1} a(r_n\otimes s_n,r_n\otimes s_n),
 \]
-dont on déduit la convergence, puis celle de la série $-2\sum_{n\geq 1}E_n$ et l'égalité de leurs sommes d'après l'identité plus haut.
+converge. D'après l'identité plus haut, on en déduit la convergence de la série $-2\sum_{n\geq 1}E_n$ et l'égalité des sommes.
+\end{itemize}
 \end{ques}
 
 \begin{ques}
-Le raisonnement précédent montre que la suite $(g_n)_{n\geq 1}$ de $V_h\otimes V_h$ est bornée en norme $H^1$ (la norme $v\longmapsto \sqrt{a(v,v)}$). Notons que cette norme équipe l'espace de dimension finie $V_h\otimes V_h$ d'une structure d'espace normé de dimension finie. Le théorème de Bolzano-Weierstrass que $(g_n)$ admet une valeur d'adhérence $g_\infty$ dans $V_h\otimes V_h$.
+Le raisonnement précédent montre que la suite $(g_n)_{n\geq 1}$ de $V_h\otimes V_h$ est bornée en norme $H^1$ (la norme $v\longmapsto \sqrt{a(v,v)}$). Notons que cette norme équipe l'espace vectoriel $V_h\otimes V_h$ d'une structure d'espace normé de dimension finie. Le théorème de Bolzano-Weierstrass que $(g_n)$ admet une valeur d'adhérence $g_\infty$ dans $V_h\otimes V_h$.
 
 
-Comme $r_n,s_n$ réalise l'optimum 
+\begin{itemize}
+\item Comme $r_n,s_n$ réalise l'optimum \eqref{eq:5}, on a, pour tous $(\delta r,\delta s)\in V_h\times V_h$
+\begin{align*}
+E_n &= 
+\mathcal{E}(u_n) - \mathcal{E}(u_{n-1}) = \mathcal{E}(u_{n-1}+r_n\otimes s_n) - \mathcal{E}(u_{n-1}) \\
+&\leq \mathcal E(u_{n-1} +\delta r\otimes\delta s) - \mathcal E(u_{n-1}) \\
+&\leq \frac 12a(u_{n-1}+\delta r,\delta s,u_{n-1} + \delta r\otimes \delta s) - \frac 12a(u_{n-1},u_{n-1}) - \int_\Omega f(\delta r\otimes\delta s) \\
+&\leq \frac 12a(\delta r\otimes\delta s,\delta r\otimes\delta s) + a(u_{n-1},\delta r\otimes\delta s) - \int_\Omega f(\delta r\otimes\delta s)
+\end{align*}
+Notons par ailleurs que comme $\delta r\otimes\delta s\in V_h\otimes V_h$ et $u_h$ est solution de \eqref{laplVar},
+\[
+a(u_{n-1},\delta r\otimes\delta s) - \underbrace{\int_\Omega f(\delta r\otimes\delta s)}_{= a(u_h,\delta r\otimes\delta s)}= -a(\underbrace{u_h-u_{n-1}}_{=g_{n-1}},\delta r\otimes\delta s)
+\]
+Enfin, en utilisant l'expression de $a$
+\[
+\boxed{E_n \leq \frac12 \int_\Omega |\nabla(\delta r\otimes\delta s)|^2 + \frac 12\int_\Omega \delta r\otimes\delta s - a(g_{n-1},\delta r\otimes\delta s).}
+\]
+
+\item Remarquons tout de suite que comme le carré $a(r_n\otimes s_n,r_n\otimes s_n)$ de la norme $H^1$ de $r_n\otimes s_n$ est le terme général d'une série convergente, on a $r_n\otimes s_n\xrightarrow[n\to\infty]{}0$. Alors, puisque
+\[
+g_{\varphi(n)-1} = g_{\varphi(n)} + r_{\varphi(n)}\otimes s_{\varphi(n)}
+\]
+on obtient que $g_{\varphi(n)-1}\xrightarrow[n\to\infty]{}g_\infty$.
+
+De plus, $E_{\varphi(n)}\xrightarrow[n\to\infty]{}0$ par convergence de sa série.
+
+Ainsi, l'inégalité démontrée plus haut donne en prenant la sous-suite d'extractrice $\varphi$
+\[
+\forall (\delta r,\delta s)\in V_h\times V_h\quad
+0\leq -a(g_{n-1},\delta r\otimes\delta s).
+\]
+Or $v\longmapsto a(g_{n-1},v)$ est linéaire; c'est donc une égalité:
+\[
+a(g_{n-1},\delta r\otimes\delta s) = 0.
+\]
+
+\item Par combinaison linéaire, on en déduit donc que
+\[
+\forall v_h\in V_h\otimes V_h\quad
+a(g_\infty,v_h) = 0
+\]
+donc $u_\infty = u_h - g_\infty\in V_h\otimes V_h$ vérifie
+\[
+\forall v_h\in V_h\otimes V_h\quad
+a(u_\infty,v_h) = a(u_h,v_h)
+\]
+d'où $\boxed{u_\infty = u_h}$ puisque $a$ est un produit scalaire: la méthode converge.
+\end{itemize}
+
 \end{ques}
 
+\section{Implémentation et tests numériques}
+
+\begin{ques}On reprend donc le système d'équations d'Euler \eqref{eq:d}.
+
+\begin{itemize}
+\item D'abord, \textbf{la première équation d'Euler:}
+
+\begin{itemize}
+\item \underline{Les termes du membre de gauche} se développent, en utilisant les calculs de la question (2), avec $\delta r=\phi_k$:
+\begin{align*}\hspace*{-3cm}
+\int_\Omega \nabla(r_n\otimes s_n)\cdot\nabla(\phi_k \otimes s_n) + \int_\Omega (r_n\otimes s_n)(\phi_k\otimes s_n)
+&=  \\
+=
+\sum_{i,j=0}^I {[R_n]}_i{[S_n]}_j\sum_{\ell=0}^I {[S_n]}_\ell &\left( \int_\Omega\nabla(\phi_i\otimes\phi_j)\cdot\nabla({\color{blue} \underbracket{\phi_k}_{\delta r}} \otimes\phi_\ell) + \int_\Omega(\phi_i\otimes\phi_j)({\color{blue} \underbracket{\phi_k}_{\delta r}} \otimes\phi_\ell)\right) \\
+&= \sum_{i=0}^I {[R_n]}_i\sum_{j,\ell} {[S_n]}_j {[S_n]}_\ell(D_{i,k}M_{j,\ell} + M_{i,k}D_{j,\ell}+ M_{i,k}M_{j,\ell}) \\
+&= {\left[\widetilde{\mathcal{M}}R_n\right]}_k
+\end{align*}
+avec la matrice
+\[
+\widehat{\mathcal{M}}_{k,i} = 
+\sum_{j,\ell} {[S_n]}_j {[S_n]}_k(D_{i,k}M_{j,\ell} + M_{i,k}D_{j,\ell}+ M_{i,k}M_{j,\ell})
+\]
+
+On remarquera que pour tout $V\in\RR^{I+1}$ on a
+\[
+V^TDV = \sum_{j,\ell} V_jD_{j,\ell}V_\ell
+\]
+et quelque chose de semblable pour $V^TMV$, d'où
+\[
+\widehat{\mathcal{M}}_{\ell,i} = (S_n^TMS_n)D_{i,k} + (S_n^TDS_n)M_{i,k} + (S_n^TMS_n)M_{i,k} = \left[\mathcal{M}(S_n)\right]_{\ell,i}
+\]
+et $\widehat{\mathcal{M}} = \mathcal{M}(S_n)$:
+\[
+\boxed{\text{le membre de gauche est }\mathcal{M}(S_n)R_n.}
+\]
+
+\item Quant au \underline{membre de droite}. En $\delta r = \phi_k$, toujours, le premier terme est
+\begin{align*}
+\int_\Omega f\phi_k\otimes s_n
+&= \sum_{p=1}^P\int_\Omega f^p_1(x)f^p(y)\sum_{i=0}^I{[S_n]}_i\phi_k\otimes\phi_i \\
+&= \sum_{p=1}^P\sum_{i=0}^I{[S_n]}_i \int_0^1 f_1^p\phi_k \int_0^1 f_2^p\phi_i \\
+&= \sum_{p=1}^P\sum_{i=0}^I{[S_n]}_i {[F_1^p]}_k {[F_2^p]}_i \\
+&= \sum_{p=1}^P (S_n^TF_2^p){\left[ F_1^p\right]}_k
+\end{align*}
+
+Les deux autres termes s'écrivent
+\begin{align*}
+\hspace*{-2cm}
+\int_\Omega \nabla u_{n-1}\cdot \nabla(\phi_k\otimes s_n) + \int_\Omega u_{n-1}(\phi_k\otimes s_n)
+&=
+\sum_{t=1}^{n-1} \left(
+\int_\Omega \nabla(r_t\otimes s_t)\cdot\nabla(\phi_k\otimes s_n) + \int_\Omega (r_t\otimes s_t)(\phi_k\otimes s_n)
+\right) \\
+& = \sum_{t=1}^{n-1} \left(
+(S_n^TDS_k)M + (S_n^TMS_k)D + (S_n^TMS_k)M
+\right)R_k
+\end{align*}
+en réutilisant les calculs précédents.
+
+On en déduit ainsi que \fbox{le membre de droite s'écrit}
+\[
+\sum_{p=1}^P(S_n^TF_2^p)F_1^p - \sum_{t=1}^{n-1} \left(
+(S_n^TDS_k)M + (S_n^TMS_k)D + (S_n^TMS_k)M
+\right)R_k = \boxed{\mathcal{F}_n(S_n)}
+\]
+\end{itemize}
+
+En conclusion, \fbox{la première équation d'Euler se réécrit sous forme matricielle:}
+\[
+\boxed{\mathcal{M}(S_n)R_n = \mathcal{F}_n(S_n)}
+\]
+
+\item \textbf{Le raisonnement est parfaitement analogue pour la seconde équation d'Euler:}
+\[
+\boxed{
+\mathcal{M}(R_n)S_n = \mathcal{G}_n(R_n)
+}
+\]
+\end{itemize}
+\end{ques}
+
+\begin{ques}
+
+\end{ques}
 
 
 \end{document}
