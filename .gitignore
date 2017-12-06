@@ -4,3 +4,4 @@
 *.fls
 *.synctex
 *.synctex.gz
+.ipynb-checkpoints
