@@ -53,6 +53,11 @@ Promotion X2016}
 
 \setlength{\parindent}{0pt}
 
+%%% Env mathématiques %%%
+\theoremstyle{plain}
+\newtheorem{lem}{Lemme}[section]
+
+
 \begin{document}
 \maketitle
 
@@ -282,16 +287,16 @@ En particulier, avec $\delta r = r_n$ et $\delta s= s_n$
 \item La remarque plus haut permet d'écrire
 \begin{align*}\hspace*{-1cm}
 \boxed{E_n = \mathcal{E}(u_n) - \mathcal{E}(u_{n-1})}
-&= \frac 12a(u_n,u_n) - \frac 12 a(u_{n-1},u_{n-1}) - \int_\Omega f(r_n\otimes s_n) \\
-&= \frac 12 a(r_n\otimes s_n,r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) - \int_\Omega f(r_n\otimes s_n) \\
-&\boxed{= \frac 12\int_\Omega |\nabla(r_n\otimes s_n)|^2 + \frac 12\int_\Omega |r_n\otimes s_n|^2 - \int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n).}\tag{e}\label{eq:e}
+&= \frac 12a(u_n,u_n) - \frac 12 a(u_{n-1},u_{n-1}) - \int_\Omega f\, r_n\otimes s_n \\
+&= \frac 12 a(r_n\otimes s_n,r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) - \int_\Omega f\, r_n\otimes s_n \\
+&\boxed{= \frac 12\int_\Omega |\nabla(r_n\otimes s_n)|^2 + \frac 12\int_\Omega |r_n\otimes s_n|^2 - \int_\Omega f\, r_n\otimes s_n + a(u_{n-1},r_n\otimes s_n).}\tag{e}\label{eq:e}
 \end{align*}
 
 Il est immédiat que les deux premiers termes du membre de droite valent $\frac 12a(r_n\otimes s_n)$. 
 Remarquons que le membre de gauche de \eqref{eq:6} est $2a(r_n\otimes s_n,r_n\otimes s_n)$ en $\delta r=r_n$, $\delta s=s_n$. Les deux derniers termes du membre de droite de \eqref{eq:e} vérifient donc:
 \begin{align*}\hspace*{-1cm}
--\int_\Omega f(r_n\otimes s_n) + a(u_{n-1},r_n\otimes s_n) 
-&= -\int_\Omega f(r_n\otimes s_n) + \int_\Omega \nabla u_{n-1}\cdot\nabla(r_n\otimes s_n) + \int_\Omega u_{n-1}(r_n\otimes s_n) \\
+-\int_\Omega f\, r_n\otimes s_n + a(u_{n-1},r_n\otimes s_n) 
+&= -\int_\Omega f\, r_n\otimes s_n + \int_\Omega \nabla u_{n-1}\cdot\nabla(r_n\otimes s_n) + \int_\Omega u_{n-1}(r_n\otimes s_n) \\
 &= -a(r_n\otimes s_n,r_n\otimes s_n)
 \end{align*}
 
@@ -309,7 +314,10 @@ converge. D'après l'identité plus haut, on en déduit la convergence de la sé
 \end{ques}
 
 \begin{ques}
-Le raisonnement précédent montre que la suite $(g_n)_{n\geq 1}$ de $V_h\otimes V_h$ est bornée en norme $H^1$ (la norme $v\longmapsto \sqrt{a(v,v)}$). Notons que cette norme équipe l'espace vectoriel $V_h\otimes V_h$ d'une structure d'espace normé de dimension finie. D'après théorème de Bolzano-Weierstrass, $(g_n)$ admet une valeur d'adhérence $g_\infty$ dans $V_h\otimes V_h$.
+Le raisonnement précédent montre que la suite $(g_n)_{n\geq 1}$ de $V_h\otimes V_h$ est bornée en norme $H^1$ (la norme $v\longmapsto \sqrt{a(v,v)}$). Notons qu'avec cette norme, $V_h\otimes V_h$ est un espace normé de dimension finie. D'après théorème de Bolzano-Weierstrass, $(g_n)$ admet une valeur d'adhérence $g_\infty$ dans $V_h\otimes V_h$ : il existe $\varphi\colon\mathbb N\to\mathbb N$ strictement croissante telle que
+\[
+g_{\varphi(n)}\xrightarrow[n\to\infty]{}g_\infty.
+\]
 
 
 \begin{itemize}
@@ -318,19 +326,19 @@ Le raisonnement précédent montre que la suite $(g_n)_{n\geq 1}$ de $V_h\otimes
 E_n &= 
 \mathcal{E}(u_n) - \mathcal{E}(u_{n-1}) = \mathcal{E}(u_{n-1}+r_n\otimes s_n) - \mathcal{E}(u_{n-1}) \\
 &\leq \mathcal E(u_{n-1} +\delta r\otimes\delta s) - \mathcal E(u_{n-1}) \\
-&\leq \frac 12a(u_{n-1}+\delta r,\delta s,u_{n-1} + \delta r\otimes \delta s) - \frac 12a(u_{n-1},u_{n-1}) - \int_\Omega f(\delta r\otimes\delta s) \\
-&\leq \frac 12a(\delta r\otimes\delta s,\delta r\otimes\delta s) + a(u_{n-1},\delta r\otimes\delta s) - \int_\Omega f(\delta r\otimes\delta s)
+&\leq \frac 12a(u_{n-1}+\delta r,\delta s,u_{n-1} + \delta r\otimes \delta s) - \frac 12a(u_{n-1},u_{n-1}) - \int_\Omega f\,\delta r\otimes\delta s \\
+&\leq \frac 12a(\delta r\otimes\delta s,\delta r\otimes\delta s) + a(u_{n-1},\delta r\otimes\delta s) - \int_\Omega f\,\delta r\otimes\delta s
 \end{align*}
 Notons par ailleurs que comme $\delta r\otimes\delta s\in V_h\otimes V_h$ et $u_h$ est solution de \eqref{laplVar},
 \[
-a(u_{n-1},\delta r\otimes\delta s) - \underbrace{\int_\Omega f(\delta r\otimes\delta s)}_{= a(u_h,\delta r\otimes\delta s)}= -a(\underbrace{u_h-u_{n-1}}_{=g_{n-1}},\delta r\otimes\delta s)
+a(u_{n-1},\delta r\otimes\delta s) - \underbrace{\int_\Omega f\,\delta r\otimes\delta s}_{= a(u_h,\delta r\otimes\delta s)}= -a(\underbrace{u_h-u_{n-1}}_{=g_{n-1}},\delta r\otimes\delta s)
 \]
 Enfin, en utilisant l'expression de $a$
 \[
-\boxed{E_n \leq \frac12 \int_\Omega |\nabla(\delta r\otimes\delta s)|^2 + \frac 12\int_\Omega \delta r\otimes\delta s - a(g_{n-1},\delta r\otimes\delta s).}
+\boxed{E_n \leq \frac12 \int_\Omega |\nabla(\delta r\otimes\delta s)|^2 + \frac 12\int_\Omega |\delta r\otimes\delta s|^2 - a(g_{n-1},\delta r\otimes\delta s).}
 \]
 
-\item Remarquons tout de suite que comme le carré $a(r_n\otimes s_n,r_n\otimes s_n)$ de la norme $H^1$ de $r_n\otimes s_n$ est le terme général d'une série convergente, on a $r_n\otimes s_n\xrightarrow[n\to\infty]{}0$. Alors, puisque
+\item Remarquons que comme le carré $a(r_n\otimes s_n,r_n\otimes s_n)$ de la norme $H^1$ de $r_n\otimes s_n$ est le terme général d'une série convergente, on a $r_n\otimes s_n\xrightarrow[n\to\infty]{}0$. Alors, puisque
 \[
 g_{\varphi(n)-1} = g_{\varphi(n)} + r_{\varphi(n)}\otimes s_{\varphi(n)}
 \]
@@ -338,27 +346,33 @@ on obtient que $g_{\varphi(n)-1}\xrightarrow[n\to\infty]{}g_\infty$.
 
 De plus, $E_{\varphi(n)}\xrightarrow[n\to\infty]{}0$ par convergence de sa série.
 
-Ainsi, l'inégalité démontrée plus haut donne en prenant la sous-suite d'extractrice $\varphi$
+En passant à la limite dans l'inégalité démontrée plus haut, on obtient
 \[
-\forall (\delta r,\delta s)\in V_h\times V_h\quad
-0\leq -a(g_{n-1},\delta r\otimes\delta s).
-\]
-Or $v\longmapsto a(g_{n-1},v)$ est linéaire; c'est donc une égalité:
-\[
-a(g_{n-1},\delta r\otimes\delta s) = 0.
+\frac 12 \|\delta r\otimes\delta s\|_{H^1}^2 - a(g_\infty,\delta r\otimes\delta s) \geq 0\quad\forall (\delta r,\delta s)\in V_h\times V_h
 \]
 
-\item Par combinaison linéaire, on en déduit donc que
+On termine en appliquant le lemme suivant:
+\begin{lem}
+	Soit $E$ un espace vectoriel normé et $f\colon E\longrightarrow\RR$ une forme linéaire sur $E$. On suppose qu'il existe une constante $C > 0$ et un cône positif $K$ tels que
+	\[
+	\forall x\in K\quad |f(x)| \leq C\|x\|^2.
+	\]
+	Alors $f$ est nulle sur $K$.
+\end{lem}
+
+L'application du lemme se fait à l'ensemble $K = \{\delta r\otimes \delta s,(\delta r,\delta s)\in V_h\times V_h \}$, dont on voit que c'est un cône positif de $V_h\otimes V_h$.
+
+La démonstration du lemme: si $x\in K$, alors on a pour tout $t > 0$ que $tx\in K$ et $t|f(x)| \leq Ct^2\|x\|^2$ donc $|f(x)| \leq Ct\|x\|^2$, puis $f(x) = 0$.  
+
+
+\item Le cône $K$ étant une partie génératrice de l'espace $V_h\otimes V_h$, on en déduit
 \[
 \forall v_h\in V_h\otimes V_h\quad
 a(g_\infty,v_h) = 0
 \]
-donc $u_\infty = u_h - g_\infty\in V_h\otimes V_h$ vérifie
-\[
-\forall v_h\in V_h\otimes V_h\quad
-a(u_\infty,v_h) = a(u_h,v_h)
-\]
-d'où $\boxed{u_\infty = u_h}$ puisque $a$ est un produit scalaire: la méthode converge.
+donc que $\boxed{g_\infty = 0}$ puisque $a$ est un produit scalaire, c'est-à-dire:
+\[\boxed{u_\infty = u_h.}\]
+Ainsi, la méthode converge.
 \end{itemize}
 
 \end{ques}
