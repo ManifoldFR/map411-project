@@ -66,9 +66,9 @@ print("\nComputing tensorial representation of RHS function...")
 # choix des composantes f1 et f2 de f sous forme séparée
 # une seule composante tensorielle est retenue
 def f1(x):
-	return x*(1-x)
-def f2(y):
-	return y*(1-y)
+	return np.exp(x)
+def f2(x):
+	return np.cos(x**2)
 
 F1 = np.zeros((gridsize+1,))
 F2 = np.zeros((gridsize+1,))
@@ -128,12 +128,17 @@ def run():
 
 	m = 20
 	n = 10
+
+	precisions_points_fixes = []
+
 	for i in range(n+1):
 		R,S,prec = fixed_point(F1,F2,Rlist,Slist,m)
+		precisions_points_fixes.append(prec)
 		print("Précision du point fixe",i,":",prec)
 		Rlist.append(R)
 		Slist.append(S)
 
+	print('Erreur maximale:',np.max(np.asarray(precisions_points_fixes)))
 
 	return Rlist,Slist
 
@@ -158,12 +163,19 @@ def graphe_sol():
 	fig = plt.figure(0,figsize=(12,8))
 	ax0 = fig.add_subplot(221)
 	ax0.grid(True)
+	ax0.set_title("Heatmap de la solution approchée "+ "$u_n=\sum_n r_n\otimes s_n$")
+
 	ax1 = fig.add_subplot(222,projection='3d')
 	ax1.grid(True)
+	ax1.set_title("Graphe 3D de la solution approchée")
+
 	ax2 = fig.add_subplot(223)
 	ax2.grid(True)
+	ax2.set_title("Heatmap de la fonction $f(x,y)$")
+
 	ax3 = fig.add_subplot(224,projection='3d')
 	ax3.grid(True)
+	ax3.set_title("Graphe 3D de la fonction $f(x,y)$")
 
 	intervalle = np.linspace(0,1,gridsize,endpoint=True)
 	domain = np.meshgrid(intervalle,intervalle)
