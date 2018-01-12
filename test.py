@@ -18,9 +18,9 @@ I = 10
 # choix des fonction f1 et f2 pour le choix de f sous forme séparée
 print "----------------------------------------------------------"
 def f1(x):
-	return x
+	return x**2
 def f2(y):
-	return y
+	return y**2
 
 
 h=1./I # Pas de discrétisation de l'intervalle [0,1]
@@ -29,7 +29,7 @@ h=1./I # Pas de discrétisation de l'intervalle [0,1]
 les_phi = []  # liste qui contiendra fonctions phi i
 
 def phi_0(x):
-	if(x >=0 and x <= 1/h):
+	if(x >=0 and x <= h):
 		return 1. - x/h
 	else:
 		return 0
@@ -38,25 +38,66 @@ les_phi.append(phi_0)
 for i in range(1,I):
 
 	def phi_i(x):
-		if(x >= (i-1)/h and x <= (i+1)/h):
-			return 1. - np.abs(x - i/h)/h
+		if(x >= (i-1)*h and x <= (i+1)*h):
+			if(x <= i*h):
+				return 1. - (i*h - x)/h
+			else:
+				return 1. - (x - i*h)/h
+			
 		else :
-			return 0
+			return 0.
+
 	les_phi.append(phi_i)
+
 	
 def phi_I(x):
-	if(x >= (I-1)/h and x <= 1):
-		return 1. + x/h
+	if(x >= (I-1)*h and x <= 1):
+		return 1. + (x - I*h)/h
 	else :
 		return 0
 les_phi.append(phi_I)
 
 
+
 les_phi_derivate = []	  # Liste qui contiendra les dérivées des fonction phi i 
-for i in range(I+1):
+
+def phi_0_derivate(x):
+	if(x >=0 and x <= h):
+		return -1./h
+	else:
+		return 0
+les_phi_derivate.append(phi_0_derivate)
+
+for i in range(1,I):
+
 	def phi_i_derivate(x):
-		return misc.derivative(les_phi[i],x)
+		if(x >= (i-1)*h and x <= (i+1)*h):
+			if(x <= i*h):
+				return 1./h
+			else:
+				return -1./h
+			
+		else :
+			return 0.
+
 	les_phi_derivate.append(phi_i_derivate)
+
+def phi_I(x):
+	if(x >= (I-1)*h and x <= 1):
+		return 1./h
+	else :
+		return 0
+les_phi_derivate.append(phi_i_derivate)
+
+
+
+
+def quad_trapz(g,a,b,p = 5):      # Calcucl de l'intégrale de g entre a et b
+
+    step = (b-a)/(p+1)
+    first_term = 0.5*(g(a)+g(b))
+    second_term = np.sum(g(a+k*step) for k in range(1,p))
+    return step*(first_term + second_term)
 
 
 D_ = []  # arrays des matrices D et M définies dans le problème
@@ -77,8 +118,8 @@ for i in range(I+1):
 			gj = les_phi[j]
 			return gi(x) * gj(x)
 
-		D_[i].append(quad(f,0,1)[0])
-		M_[i].append(quad(g,0,1)[0])
+		D_[i].append(quad_trapz(f,0,1,p=5))
+		M_[i].append(quad_trapz(g,0,1,p=5))
 		
 
 
@@ -87,8 +128,12 @@ D = np.array(D_)  # Matrices D et M
 M = np.array(M_)
 
 
+
+
 F1_ = []   # Arrays des F_alpha
 F2_ = []
+
+
 
 for i in range(I+1):
 	def produit1(x):
@@ -96,8 +141,8 @@ for i in range(I+1):
 	def produit2(x):
 		return f2(x) * les_phi[i](x)
 
-	F1_.append(quad(produit1,0,1)[0])
-	F2_.append(quad(produit2,0,1)[0])
+	F1_.append(quad_trapz(produit1,0,1,p = 5))
+	F2_.append(quad_trapz(produit2,0,1,p = 5))
 
 
 F1 = np.array(F1_) # Matrices colonnes F_alpha
@@ -105,6 +150,7 @@ F2 = np.array(F2_)
 
 
 
+# Quelques outils de calculs de matrice en chaine 
 def produit_matriciel4(A,B,C,D): # produit de 4 matrices
 	return np.dot(np.dot(A,B),np.dot(C,D)) # il y'a potentiellement un calcul matriciel plus efficace mais on ne va pas s'en soucier pour l'instant
 
@@ -126,13 +172,14 @@ def G(V):
 
 # Algorithme récurisif pour le calcul des vecteurs colonnes R et S avec n et m fixés 
 
-S0 = np.array(np.random.rand(I+1,I+1)) # So est choisit aléatoirement
-R0 = np.array([1] * (I+1))
-F = F(S0)
-G = G(R0)
+S0 = np.array(np.random.rand(I+1,)) # So est choisie aléatoirement
+R0 = S0 # R0 est ainsi initialisée
+Fval = F(S0)
+Gval = G(R0)
+print A(S0)
 i = 0 
 while(i <= n):
-	print i 
+	
 	S0_before = S0
 	R0_before = R0
 	k = 0
@@ -142,39 +189,10 @@ while(i <= n):
 		R0 = np.dot(np.linalg.inv(A(S0)),F(S0))
 		k += 1
 	
-	F = F - produit_matriciel5(S0.T,D,S0_before,M,R0_before) - produit_matriciel5(S0.T,M,S0_before,D,R0_before) - produit_matriciel5(S0.T,M,S0_before,M,R0_before)
-	G = G - produit_matriciel5(R0.T,D,R0_before,M,S0_before) - produit_matriciel5(R0.T,M,R0_before,D,S0_before) - produit_matriciel5(R0.T,M,R0_before,M,S0_before)
+	Fval = Fval - produit_matriciel5(S0.T,D,S0_before,M,R0_before) - produit_matriciel5(S0.T,M,S0_before,D,R0_before) - produit_matriciel5(S0.T,M,S0_before,M,R0_before)
+	Gval = Gval - produit_matriciel5(R0.T,D,R0_before,M,S0_before) - produit_matriciel5(R0.T,M,R0_before,D,S0_before) - produit_matriciel5(R0.T,M,R0_before,M,S0_before)
 	i+=1
 
 
 
-
-
-
 print ("ok")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
