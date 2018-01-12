@@ -47,12 +47,14 @@ def build_matrices():
 	rigidity_matrix = np.zeros((gridsize+1,gridsize+1))
 	mass_matrix = np.zeros((gridsize+1,gridsize+1))
 
+	iter_integr = 20
+
 	for i in range(gridsize+1):
 		for j in range(gridsize+1):
 			rigidity_matrix[i,j] = quad_trapz(
-				lambda x: dPhi(x,i)*dPhi(x,j),0,1,15)
+				lambda x: dPhi(x,i)*dPhi(x,j),0,1,iter_integr)
 			mass_matrix[i,j] = quad_trapz(
-				lambda x: phi(x,i)*phi(x,j),0,1,15)
+				lambda x: phi(x,i)*phi(x,j),0,1,iter_integr)
 
 	print(np.array_repr(mass_matrix,max_line_width=160,precision=4))
 	return mass_matrix,rigidity_matrix
@@ -67,8 +69,6 @@ def f1(x):
 	return x*(1-x)
 def f2(y):
 	return y*(1-y)
-
-
 
 F1 = np.zeros((gridsize+1,))
 F2 = np.zeros((gridsize+1,))
@@ -108,7 +108,8 @@ def G(V,F1,F2,Rlist,Slist):
 
 # Méthode de point fixe; part des matrices aléatoires initialisées
 def fixed_point(F1,F2,Rlist,Slist,m):
-	S = np.array(np.random.rand(gridsize+1,)) # So est choisie aléatoirement
+	S = np.array(np.random.rand(gridsize+1,)) # S est choisie aléatoirement dans le parallépipède [0,1]^{I+1}
+	#print(np.array2string(S,max_line_width=160))
 	R = S # R est ainsi initialisée
 	for _ in range(m):
 		R_prev = R
@@ -154,7 +155,7 @@ def build_sol(run_results):
 
 
 def graphe_sol():
-	fig = plt.figure(0)
+	fig = plt.figure(0,figsize=(12,8))
 	ax0 = fig.add_subplot(221)
 	ax0.grid(True)
 	ax1 = fig.add_subplot(222,projection='3d')
