@@ -4,4 +4,5 @@
 *.fls
 *.synctex
 *.synctex.gz
+__pycache__
 .ipynb-checkpoints
